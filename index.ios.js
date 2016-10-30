@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, Navigator, ListView, StyleSheet } from 'react-native';
 
-import MainView from './view/MainView.js';
-import ButtonView from './view/ButtonView.js';
+import MainView from './src/view/MainView.js';
+import ButtonView from './src/view/ButtonView.js';
 
 export default class QUI extends Component {
   constructor(props){

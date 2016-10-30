@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
+import colors from '../component/config/colors'
 
 import Button from '../component/buttons/Button';
 
@@ -8,12 +9,25 @@ export default class ButtonView extends Component {
     return(
       <View style={this.props.style}>
         <Button
-          onPress={() => {console.log('pressed!')}}
-          onLongPress={() => {console.log('onLongPress!')}}
-          text='按钮'
+          onPress={() => {alert('onPress!')}}
+          onLongPress={() => {alert('onLongPress!')}}
+          backgroundColor={colors.primary1}
+          text="确认"
+        />
+        <Button
+          onPress={() => {alert('onPress!')}}
+          onLongPress={() => {alert('onLongPress!')}}
+          backgroundColor={colors.grey0}
+          text="取消"
+        />
+        <Button
+          onPress={() => {alert('onPress!')}}
+          onLongPress={() => {alert('onLongPress!')}}
+          backgroundColor={colors.disabled}
+          disabled={true}
+          text="Disabled"
         />
       </View>
     )
   }
 }
-

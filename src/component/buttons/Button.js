@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import colors from '../config/colors';
 
 export default class Button extends Component {
@@ -8,16 +8,19 @@ export default class Button extends Component {
   }
 
   render(){
+    const {onPress, onLongPress, text, backgroundColor, disabled} = this.props;
     return(
-      <TouchableHighlight
+      <TouchableOpacity
+        style={[styles.button, {backgroundColor: backgroundColor}]}
         activeOpacity={0.85}
-        onLongPress={this.props.onLongPress}
+        disabled={disabled}
+        onLongPress={onLongPress}
         onPress={() => {
-          this.props.onPress()
+          onPress()
         }}>
-          <Text>{this.props.text}</Text>
+          <Text style={styles.text}>{text}</Text>
 
-      </TouchableHighlight>
+      </TouchableOpacity>
     )
   }
 }
@@ -27,7 +30,7 @@ const styles = StyleSheet.create({
     padding: 19,
     marginLeft: 15,
     marginRight: 15,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.primary1,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row'
