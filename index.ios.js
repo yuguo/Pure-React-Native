@@ -21,13 +21,25 @@ export default class QUI extends Component {
   }
 
   renderScene(route, navigator){
+    this.navigator = navigator;
     if(route.name == 'Main') {
       return(
-        <MainView {...route.passProps} />
+        <MainView
+          ds={this.state.dataSource}
+          onForward={ (name) => {
+            navigator.push({
+              name: name
+            })
+          }}
+          onBack={ () => {
+            console.log(route.name);
+          }}
+        />
       )
-    }else if(route.name == 'Button'){
-      return
+    }else if(route.name == 'QButton'){
+      return(
         <ButtonView />
+      )
     }
   }
 
@@ -35,16 +47,12 @@ export default class QUI extends Component {
     return (
       <Navigator
         initialRoute={{
-          name: 'Main',
-          passProps: {
-            ds: this.state.dataSource
-          }
+          name: 'Main'
         }}
-        renderScene={ this.renderScene }
+        renderScene={ this.renderScene.bind(this) }
       />
     );
   }
 }
-
 
 AppRegistry.registerComponent('QUI', () => QUI);
