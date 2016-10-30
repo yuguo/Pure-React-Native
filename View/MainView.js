@@ -5,7 +5,7 @@ export default class MainView extends Component {
 
   render(){
     return(
-      <View style={styles.container}>
+      <View style={this.props.style}>
         <ListView
           dataSource={this.props.ds}
           renderRow={(rowData) =>
@@ -21,11 +21,6 @@ export default class MainView extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 20,
-    marginLeft: 5,
-    marginRight: 5
-  },
   listTitle: {
     fontSize: 30
   }
