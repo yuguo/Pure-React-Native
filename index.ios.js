@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, Navigator, ListView, StyleSheet } from 'react-native';
 
-import MainView from './View/MainView.js';
-import ButtonView from './View/ButtonView.js';
+import MainView from './view/MainView.js';
+import ButtonView from './view/ButtonView.js';
 
 export default class QUI extends Component {
   constructor(props){
@@ -10,7 +10,7 @@ export default class QUI extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows([
-        'QButton', 'QModal'
+        'Button', 'Modal'
       ])
     }
   }
@@ -32,7 +32,7 @@ export default class QUI extends Component {
           }}
         />
       )
-    }else if(route.name == 'QButton'){
+    }else if(route.name == 'Button'){
       return(
         <ButtonView
           style={styles.container}
