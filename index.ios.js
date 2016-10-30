@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  Text,
-  Navigator,
-  ListView,
-  StyleSheet
-} from 'react-native';
+import { AppRegistry, Text, Navigator, ListView, StyleSheet } from 'react-native';
 
 import MainView from './View/MainView.js';
 import ButtonView from './View/ButtonView.js';
