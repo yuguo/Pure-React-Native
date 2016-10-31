@@ -1,44 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
 import colors from '../config/colors';
-
-export default class Button extends Component {
-  constructor(props){
-    super(props);
-  }
-
-  render(){
-    const {type, onPress, onLongPress, text, bgColor, disabled} = this.props;
-
-    /* 自定义style */
-    let customStyle = {}
-    if(bgColor){
-      customStyle.backgroundColor = bgColor;
-    }
-
-    return(
-      <TouchableHighlight
-        style={[
-          styles.button,
-          styles[type] || styles["blue"],
-          customStyle,
-          disabled && styles.disabled
-        ]}
-        disabled={disabled}
-        onLongPress={onLongPress}
-        onPress={onPress}
-        underlayColor={colors.btBluePressed}
-      >
-          <Text style={[
-              styles.text,
-              disabled && styles.disabledText
-            ]}>
-            {text}
-          </Text>
-      </TouchableHighlight>
-    )
-  }
-}
+import Color from 'color';
 
 const styles = StyleSheet.create({
   button: {
@@ -49,12 +12,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     borderRadius: 5
-  },
-  blue: {
-    backgroundColor: colors.btBlue
-  },
-  red: {
-    backgroundColor: colors.btRed
   },
   text: {
     color: 'white',
@@ -67,3 +24,52 @@ const styles = StyleSheet.create({
     color: colors.btDisabledText
   }
 });
+
+export default class Button extends Component {
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    const {type, onPress, onLongPress, text, bgColor, disabled} = this.props;
+
+    /* 自定义背景色，或读取type */
+    let backgroundColor;
+    if(bgColor){
+      backgroundColor = bgColor;
+    }else{
+      switch (type) {
+        case 'red':
+          backgroundColor = colors.btRed;
+          break;
+        default:
+          backgroundColor = colors.btBlue
+      }
+    }
+
+    let underlayColor = Color(backgroundColor).darken(0.1).hexString();
+
+    return(
+      <TouchableHighlight
+        style={[
+          styles.button,
+          {backgroundColor: backgroundColor},
+          disabled && styles.disabled
+        ]}
+        activeOpacity={1}
+        disabled={disabled}
+        onLongPress={onLongPress}
+        onPress={onPress}
+        underlayColor={underlayColor}
+      >
+          <Text style={[
+              styles.text,
+              disabled && styles.disabledText
+            ]}
+          >
+            {text}
+          </Text>
+      </TouchableHighlight>
+    )
+  }
+}
