@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ScrollView, ListView, View} from 'react-native';
+import {ScrollView, ListView, Text, View} from 'react-native';
 import TextCell from '../component/listCells/TextCell';
 
 export default class CellView extends Component {
@@ -25,10 +25,26 @@ export default class CellView extends Component {
               onForward={() => this._onForward(rowData)}
             >{rowData}</TextCell>
           }
-          renderSeparator = {(sectionID, rowID, adjacentRowHighlighted) =>
+          renderSeparator = {(sectionID, rowID, adjacentRowHighlighted) => {
+            if(rowID == this.dataSource.rowIdentities[0].length - 1){
+              return null;
+            }else{
+              return(
+                <View
+                  key={`${sectionID}-${rowID}`}
+                  style={{alignSelf: 'stretch', marginLeft: 10, height: 0.5, backgroundColor: '#dedfe0'}}
+                />
+            );
+            }
+          }}
+          renderHeader = {() =>
             <View
-              key={`${sectionID}-${rowID}`}
-              style={{alignSelf: 'stretch', marginLeft: 10, height: 0.5, backgroundColor: '#dedfe0'}}
+              style={{alignSelf: 'stretch', height: 0.5, backgroundColor: '#cbcbcb'}}
+            />
+          }
+          renderFooter = {() =>
+            <View
+              style={{alignSelf: 'stretch', height: 0.5, backgroundColor: '#cbcbcb'}}
             />
           }
         />
