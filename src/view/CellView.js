@@ -7,13 +7,35 @@ export default class CellView extends Component {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.dataSource = ds.cloneWithRows([
-      'SingleTextListCell', 'SingleTextListCellWithDescription'
+      {title: 'SingleTextListCell'},
+      {title: 'SingleTextListCellWithDescription',
+        description: 'Description description description description.'
+      }
     ]);
   }
 
   _onForward(data){
     alert(data);
   };
+
+  _renderSepatator(sectionID, rowID, adjacentRowHighlighted){
+    if(rowID == this.dataSource.rowIdentities[0].length - 1){
+      return null;
+    }else{
+      return(
+        <View
+          key={`${sectionID}-${rowID}`}
+          style={{alignSelf: 'stretch', marginLeft: 10, height: 0.5, backgroundColor: '#dedfe0'}}
+        />
+    );
+    }
+  };
+
+  _renderHeader(){
+    return(<View
+      style={{alignSelf: 'stretch', height: 0.5, backgroundColor: '#cbcbcb'}}
+    />);
+  }
 
   render(){
     return(
@@ -23,30 +45,13 @@ export default class CellView extends Component {
           renderRow={(rowData) =>
             <TextCell
               onForward={() => this._onForward(rowData)}
-            >{rowData}</TextCell>
-          }
-          renderSeparator = {(sectionID, rowID, adjacentRowHighlighted) => {
-            if(rowID == this.dataSource.rowIdentities[0].length - 1){
-              return null;
-            }else{
-              return(
-                <View
-                  key={`${sectionID}-${rowID}`}
-                  style={{alignSelf: 'stretch', marginLeft: 10, height: 0.5, backgroundColor: '#dedfe0'}}
-                />
-            );
-            }
-          }}
-          renderHeader = {() =>
-            <View
-              style={{alignSelf: 'stretch', height: 0.5, backgroundColor: '#cbcbcb'}}
+              title={rowData.title}
+              description={rowData.description}
             />
           }
-          renderFooter = {() =>
-            <View
-              style={{alignSelf: 'stretch', height: 0.5, backgroundColor: '#cbcbcb'}}
-            />
-          }
+          renderSeparator = {this._renderSepatator.bind(this)}
+          renderHeader = {this._renderHeader}
+          renderFooter = {this._renderHeader}
         />
     </ScrollView>
     )
