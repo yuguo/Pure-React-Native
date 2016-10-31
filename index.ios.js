@@ -9,11 +9,9 @@ export default class QUI extends Component {
   constructor(props){
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows([
+    this.dataSource = ds.cloneWithRows([
         'Button', 'Cell', 'Tips', 'Text', 'TabNav', 'Search', 'Dialog', 'Menu', 'Actionsheet', 'Share'
-      ])
-    }
+      ]);
   }
 
   renderScene(route, navigator){
@@ -22,7 +20,7 @@ export default class QUI extends Component {
       return(
         <MainView
           style={styles.container}
-          ds={this.state.dataSource}
+          ds={this.dataSource}
           onForward={ (name) => {
             navigator.push({
               name: name
