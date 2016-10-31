@@ -19,6 +19,7 @@ export default class ButtonView extends Component {
       <View style={this.props.style}>
         <View style={styles.alignButtons}>
           <Button
+            type="line"
             onPress={() => {alert('onPress!')}}
             onLongPress={() => {alert('onLongPress!')}}
             text="按钮"
@@ -60,6 +61,7 @@ export default class ButtonView extends Component {
 
         <View>
           <Button
+            type="line"
             size="large"
             onPress={() => {alert('onPress!')}}
             onLongPress={() => {alert('onLongPress!')}}

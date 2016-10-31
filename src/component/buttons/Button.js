@@ -7,6 +7,8 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 0.5,
+    borderColor: 'transparent'
     // flexDirection: 'row'
   },
   text: {
@@ -42,15 +44,17 @@ export default class Button extends Component {
         case 'blue':
           backgroundColor = colors.btBlue;
           break;
-        default:
+        case 'line':
           backgroundColor = 'white';
           borderStyle = {
-            borderWidth: 0.5,
             borderColor: colors.btWhiteLine
           };
           borderTextStyle = {
             color: 'black',
           }
+          break;
+        default:
+          backgroundColor = colors.btRed;
       }
     }
 
