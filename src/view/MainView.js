@@ -1,27 +1,19 @@
 import React, {Component} from 'react';
-import {View, ListView, Text, StyleSheet, TouchableHighlight} from 'react-native';
+import {ScrollView, ListView} from 'react-native';
+import SimpleCell from '../component/lists/SimpleCell';
 
 export default class MainView extends Component {
 
   render(){
     return(
-      <View style={this.props.style}>
+      <ScrollView style={this.props.style}>
         <ListView
           dataSource={this.props.ds}
           renderRow={(rowData) =>
-            <TouchableHighlight onPress={() => {
-                this.props.onForward(rowData);
-              }}>
-              <Text style={styles.listTitle}>{rowData}</Text>
-            </TouchableHighlight>}
+            <SimpleCell onForward={this.props.onForward}>{rowData}</SimpleCell>
+          }
         />
-      </View>
+    </ScrollView>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  listTitle: {
-    fontSize: 30
-  }
-});
