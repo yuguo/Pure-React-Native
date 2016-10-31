@@ -12,10 +12,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexWrap: 'wrap',
     alignItems: 'flex-start'
+  },
+  image: {
+    width: 34,
+    height: 34,
+    margin: 6
   }
 });
 
-export default class SimpleCell extends Component {
+export default class TextCell extends Component {
   constructor(props){
     super(props);
   }
@@ -63,7 +68,7 @@ export default class SimpleCell extends Component {
         onPress={() => {
           this.props.onForward(this.props.children);
         }}>
-        <Image source={imageUri} style={{width: 34, height: 34, margin: 6}} />
+        <Image source={imageUri} style={styles.image} />
         <Text style={styles.listTitle}>{this.props.children}</Text>
       </TouchableOpacity>
     )

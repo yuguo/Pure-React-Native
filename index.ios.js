@@ -3,7 +3,7 @@ import { AppRegistry, Text, Navigator, ListView, StyleSheet } from 'react-native
 
 import MainView from './src/view/MainView.js';
 import ButtonView from './src/view/ButtonView.js';
-import ListsView from './src/view/ListView.js';
+import CellView from './src/view/CellView.js';
 
 export default class QUI extends Component {
   constructor(props){
@@ -11,7 +11,7 @@ export default class QUI extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows([
-        'Button', 'List', 'Tips', 'Text', 'TabNav', 'Search', 'Dialog', 'Menu', 'Actionsheet', 'Share'
+        'Button', 'Cell', 'Tips', 'Text', 'TabNav', 'Search', 'Dialog', 'Menu', 'Actionsheet', 'Share'
       ])
     }
   }
@@ -39,9 +39,9 @@ export default class QUI extends Component {
           style={styles.container}
         />
       )
-    }else if(route.name == 'List'){
+    }else if(route.name == 'Cell'){
       return(
-        <ListsView
+        <CellView
           style={styles.container}
         />
       )
