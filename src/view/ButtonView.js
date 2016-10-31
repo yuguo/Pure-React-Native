@@ -8,22 +8,37 @@ export default class ButtonView extends Component {
   render(){
     return(
       <View style={this.props.style}>
+        <Text>蓝色按钮</Text>
         <Button
           onPress={() => {alert('onPress!')}}
           onLongPress={() => {alert('onLongPress!')}}
-          backgroundColor={colors.primary1}
           text="确认"
         />
+        <Text>红色按钮</Text>
         <Button
+          type="red"
           onPress={() => {alert('onPress!')}}
           onLongPress={() => {alert('onLongPress!')}}
-          backgroundColor={colors.grey0}
-          text="取消"
+          text="警告"
         />
+        <Text>Disable按钮</Text>
         <Button
           onPress={() => {alert('onPress!')}}
           onLongPress={() => {alert('onLongPress!')}}
-          backgroundColor={colors.disabled}
+          disabled={true}
+          text="Disabled"
+        />
+        <Text>自定义按钮</Text>
+        <Button
+          onPress={() => {alert('onPress!')}}
+          onLongPress={() => {alert('onLongPress!')}}
+          bgColor="blue"
+          text="自定义按钮"
+        />
+        <Text>自定义按钮Disabled（统一灰色）</Text>
+        <Button
+          onPress={() => {alert('onPress!')}}
+          onLongPress={() => {alert('onLongPress!')}}
           disabled={true}
           text="Disabled"
         />

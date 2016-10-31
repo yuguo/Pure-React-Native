@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
 import colors from '../config/colors';
 
 export default class Button extends Component {
@@ -8,19 +8,34 @@ export default class Button extends Component {
   }
 
   render(){
-    const {onPress, onLongPress, text, backgroundColor, disabled} = this.props;
+    const {type, onPress, onLongPress, text, bgColor, disabled} = this.props;
+
+    /* 自定义style */
+    let customStyle = {}
+    if(bgColor){
+      customStyle.backgroundColor = bgColor;
+    }
+
     return(
-      <TouchableOpacity
-        style={[styles.button, {backgroundColor: backgroundColor}]}
-        activeOpacity={0.85}
+      <TouchableHighlight
+        style={[
+          styles.button,
+          styles[type] || styles["blue"],
+          customStyle,
+          disabled && styles.disabled
+        ]}
         disabled={disabled}
         onLongPress={onLongPress}
-        onPress={() => {
-          onPress()
-        }}>
-          <Text style={styles.text}>{text}</Text>
-
-      </TouchableOpacity>
+        onPress={onPress}
+        underlayColor={colors.btBluePressed}
+      >
+          <Text style={[
+              styles.text,
+              disabled && styles.disabledText
+            ]}>
+            {text}
+          </Text>
+      </TouchableHighlight>
     )
   }
 }
@@ -30,13 +45,25 @@ const styles = StyleSheet.create({
     padding: 19,
     marginLeft: 15,
     marginRight: 15,
-    backgroundColor: colors.primary1,
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    borderRadius: 5
+  },
+  blue: {
+    backgroundColor: colors.btBlue
+  },
+  red: {
+    backgroundColor: colors.btRed
   },
   text: {
     color: 'white',
     fontSize: 18
+  },
+  disabled: {
+    backgroundColor: colors.btDisabled
+  },
+  disabledText: {
+    color: colors.btDisabledText
   }
 });
