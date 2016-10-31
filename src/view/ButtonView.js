@@ -8,8 +8,15 @@ export default class ButtonView extends Component {
   render(){
     return(
       <View style={this.props.style}>
+        <Text>普通按钮</Text>
+        <Button
+          onPress={() => {alert('onPress!')}}
+          onLongPress={() => {alert('onLongPress!')}}
+          text="确认"
+        />
         <Text>蓝色按钮</Text>
         <Button
+          type="blue"
           onPress={() => {alert('onPress!')}}
           onLongPress={() => {alert('onLongPress!')}}
           text="确认"

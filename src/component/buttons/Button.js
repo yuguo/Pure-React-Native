@@ -34,7 +34,9 @@ export default class Button extends Component {
     const {type, onPress, onLongPress, text, bgColor, disabled} = this.props;
 
     /* 自定义背景色，或读取type */
-    let backgroundColor;
+    let backgroundColor,
+        borderStyle,
+        borderTextStyle;
     if(bgColor){
       backgroundColor = bgColor;
     }else{
@@ -42,8 +44,18 @@ export default class Button extends Component {
         case 'red':
           backgroundColor = colors.btRed;
           break;
+        case 'blue':
+          backgroundColor = colors.btBlue;
+          break;
         default:
-          backgroundColor = colors.btBlue
+          backgroundColor = 'white';
+          borderStyle = {
+            borderWidth: 0.5,
+            borderColor: colors.btWhiteLine
+          };
+          borderTextStyle = {
+            color: 'black',
+          }
       }
     }
 
@@ -54,6 +66,7 @@ export default class Button extends Component {
         style={[
           styles.button,
           {backgroundColor: backgroundColor},
+          borderStyle,
           disabled && styles.disabled
         ]}
         activeOpacity={1}
@@ -64,6 +77,7 @@ export default class Button extends Component {
       >
           <Text style={[
               styles.text,
+              borderTextStyle,
               disabled && styles.disabledText
             ]}
           >
