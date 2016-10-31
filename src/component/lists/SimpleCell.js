@@ -4,7 +4,7 @@ import colors from '../config/colors';
 
 const styles = StyleSheet.create({
   listTitle: {
-    fontSize: 30,
+    fontSize: 18,
     marginLeft: 10
   },
   cell: {
