@@ -4,15 +4,20 @@ import colors from '../component/config/colors'
 
 import Button from '../component/buttons/Button';
 
+const styles = StyleSheet.create({
+  alignButtons: {
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    flexDirection:'row',
+    marginBottom: 10,
+  }
+});
+
 export default class ButtonView extends Component {
   render(){
     return(
-      <View>
-        <View style={[this.props.style, {
-            flexWrap: 'wrap',
-            alignItems: 'flex-start',
-            flexDirection:'row'
-          }]}>
+      <View style={this.props.style}>
+        <View style={styles.alignButtons}>
           <Button
             onPress={() => {alert('onPress!')}}
             onLongPress={() => {alert('onLongPress!')}}
@@ -30,6 +35,8 @@ export default class ButtonView extends Component {
             onLongPress={() => {alert('onLongPress!')}}
             text="警告"
           />
+        </View>
+        <View style={styles.alignButtons}>
           <Button
             onPress={() => {alert('onPress!')}}
             onLongPress={() => {alert('onLongPress!')}}
@@ -42,9 +49,51 @@ export default class ButtonView extends Component {
             bgColor="blue"
             text="自定义按钮"
           />
+          <Button
+            disabled
+            onPress={() => {alert('onPress!')}}
+            onLongPress={() => {alert('onLongPress!')}}
+            bgColor="blue"
+            text="自定义按钮"
+          />
         </View>
 
-        
+        <View>
+          <Button
+            size="large"
+            onPress={() => {alert('onPress!')}}
+            onLongPress={() => {alert('onLongPress!')}}
+            text="按钮"
+          />
+          <Button
+            size="large"
+            type="blue"
+            onPress={() => {alert('onPress!')}}
+            onLongPress={() => {alert('onLongPress!')}}
+            text="确认"
+          />
+          <Button
+            size="large"
+            type="red"
+            onPress={() => {alert('onPress!')}}
+            onLongPress={() => {alert('onLongPress!')}}
+            text="警告"
+          />
+          <Button
+            size="large"
+            onPress={() => {alert('onPress!')}}
+            onLongPress={() => {alert('onLongPress!')}}
+            disabled={true}
+            text="Disabled"
+          />
+          <Button
+            size="large"
+            onPress={() => {alert('onPress!')}}
+            onLongPress={() => {alert('onLongPress!')}}
+            bgColor="blue"
+            text="自定义按钮"
+          />
+        </View>
       </View>
     )
   }

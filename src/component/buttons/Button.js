@@ -60,10 +60,12 @@ export default class Button extends Component {
     switch(size){
       case 'large':
         sizeStyle = {
-          borderRadius: 5,
-            padding: 19,
-            marginLeft: 15,
-            marginRight: 15,
+          borderRadius: 3,
+          padding: 11,
+          marginLeft: 12,
+          marginRight: 12,
+          marginTop: 5,
+          marginBottom: 5
         },
         sizeTextStyle = {
           fontSize: 18
@@ -73,14 +75,11 @@ export default class Button extends Component {
         sizeStyle = {
           borderRadius: 2,
           height: 30,
-          flex: -1,
           minWidth: 30,
           paddingLeft: 16,
           paddingRight: 16,
-          marginLeft: 10,
-          marginRight: 10,
-          marginTop: 24,
-          marginBottom: 24
+          marginLeft: 12,
+          marginRight: 12,
         },
         sizeTextStyle = {
           fontSize: 14

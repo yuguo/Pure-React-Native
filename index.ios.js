@@ -75,9 +75,7 @@ export default class QUI extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 50,
-    marginLeft: 5,
-    marginRight: 5
+    marginTop: 50
   },
   title: {
     fontSize:20
