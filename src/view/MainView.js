@@ -4,7 +4,47 @@ import ImageCell from '../component/listCells/ImageCell';
 
 export default class MainView extends Component {
 
+  _getImage(componentName){
+    let imageUri;
+    switch(componentName){
+      case 'Button':
+        imageUri = require("../image/button.png");
+        break;
+      case 'List':
+        imageUri = require("../image/list.png");
+        break;
+      case 'Tips':
+        imageUri = require("../image/tips.png");
+        break;
+      case 'Text':
+        imageUri = require("../image/text.png");
+        break;
+      case 'TabNav':
+        imageUri = require("../image/tab.png");
+        break;
+      case 'Search':
+        imageUri = require("../image/search.png");
+        break;
+      case 'Dialog':
+        imageUri = require("../image/dialog.png");
+        break;
+      // case 'Actionsheet':
+      //   imageUri = require("../image/actionsheet.png");
+      //   break;
+      case 'Share':
+        imageUri = require("../image/share.png");
+        break;
+      case 'Menu':
+        imageUri = require("../image/menu.png");
+        break;
+      default:
+        imageUri = require("../image/list.png");
+    }
+    return imageUri;
+}
+
   render(){
+
     return(
       <ScrollView style={this.props.style}>
         <ListView
@@ -12,7 +52,10 @@ export default class MainView extends Component {
           renderRow={(rowData) =>
             <ImageCell
               onForward={this.props.onForward}
-            >{rowData}</ImageCell>
+              title={rowData}
+              imageSource={this._getImage(rowData)}
+              showArrow={true}
+            ></ImageCell>
           }
           renderSeparator = {(sectionID, rowID, adjacentRowHighlighted) =>
             <View

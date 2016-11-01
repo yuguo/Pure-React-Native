@@ -10,24 +10,24 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 14,
-    color: '#bbb',
+    lineHeight: 21,
+    color: colors.btDisabledText,
     marginLeft: 10,
     marginRight: 20
   },
   cell: {
-    // height: 46,
     paddingTop: 14,
     paddingBottom: 14,
     flexWrap: 'wrap',
     alignItems: 'center',
-    flexDirection: 'row'
-  },
-  textCell: {
-    // justifyContent: 'flex-start'
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   rightwards: {
-    height: 20,
-    width: 20
+    height: 16,
+    width: 16,
+    marginRight: 10,
+    tintColor: colors.btDisabledText
   }
 });
 
@@ -44,7 +44,7 @@ export default class TextCell extends Component {
         onPress={() => {
           onForward(title);
         }}>
-        <View style={styles.textCell}>
+        <View>
           <Text style={styles.title}>{title}</Text>
           {description ? <Text style={styles.description}>{description}</Text> : null}
         </View>

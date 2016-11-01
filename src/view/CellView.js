@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ScrollView, ListView, Text, View} from 'react-native';
+import {ScrollView, ListView, Text, View, StyleSheet} from 'react-native';
 import TextCell from '../component/listCells/TextCell';
 
 export default class CellView extends Component {
@@ -7,8 +7,11 @@ export default class CellView extends Component {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.dataSource = ds.cloneWithRows([
-      {title: 'SingleTextListCell'},
-      {title: 'SingleTextListCellWithDescription',
+      {title: '单行文本条目'},
+      {title: '双行文本条目',
+        description: '包括一个标题和一句描述'
+      },
+      {title: '带上箭头',
         description: 'Description description description description.',
         showArrow: true
       }
@@ -42,6 +45,22 @@ export default class CellView extends Component {
     return(
       <ScrollView style={this.props.style}>
         <ListView
+          style={styles.listView}
+          dataSource={this.dataSource}
+          renderRow={(rowData) =>
+            <TextCell
+              onForward={() => this._onForward(rowData)}
+              title={rowData.title}
+              description={rowData.description}
+              showArrow={rowData.showArrow}
+            />
+          }
+          renderSeparator = {this._renderSepatator.bind(this)}
+          renderHeader = {this._renderHeader}
+          renderFooter = {this._renderHeader}
+        />
+
+        <ListView
           dataSource={this.dataSource}
           renderRow={(rowData) =>
             <TextCell
@@ -59,3 +78,9 @@ export default class CellView extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  listView: {
+    marginBottom: 20,
+  }
+});
