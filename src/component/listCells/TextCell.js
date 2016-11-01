@@ -37,17 +37,18 @@ export default class TextCell extends Component {
   }
 
   render(){
+    const {title, description, showArrow, onForward} = this.props;
     return(
       <TouchableOpacity
         style={styles.cell}
         onPress={() => {
-          this.props.onForward(this.props.title);
+          onForward(title);
         }}>
         <View style={styles.textCell}>
-          <Text style={styles.title}>{this.props.title}</Text>
-          {this.props.description ? <Text style={styles.description}>{this.props.description}</Text> : null}
+          <Text style={styles.title}>{title}</Text>
+          {description ? <Text style={styles.description}>{description}</Text> : null}
         </View>
-        {this.props.showArrow ? <Image source={require("../../image/rightwards.png")} style={styles.rightwards} /> : null}
+        {showArrow ? <Image source={require("../../image/rightwards.png")} style={styles.rightwards} /> : null}
       </TouchableOpacity>
     )
   }
