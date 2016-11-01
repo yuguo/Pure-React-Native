@@ -9,7 +9,8 @@ export default class CellView extends Component {
     this.dataSource = ds.cloneWithRows([
       {title: 'SingleTextListCell'},
       {title: 'SingleTextListCellWithDescription',
-        description: 'Description description description description.'
+        description: 'Description description description description.',
+        showArrow: true
       }
     ]);
   }
@@ -47,6 +48,7 @@ export default class CellView extends Component {
               onForward={() => this._onForward(rowData)}
               title={rowData.title}
               description={rowData.description}
+              showArrow={rowData.showArrow}
             />
           }
           renderSeparator = {this._renderSepatator.bind(this)}

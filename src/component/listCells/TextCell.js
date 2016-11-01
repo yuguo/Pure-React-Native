@@ -18,9 +18,16 @@ const styles = StyleSheet.create({
     // height: 46,
     paddingTop: 14,
     paddingBottom: 14,
-    justifyContent: 'center',
     flexWrap: 'wrap',
-    alignItems: 'flex-start'
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+  textCell: {
+    // justifyContent: 'flex-start'
+  },
+  rightwards: {
+    height: 20,
+    width: 20
   }
 });
 
@@ -36,8 +43,11 @@ export default class TextCell extends Component {
         onPress={() => {
           this.props.onForward(this.props.title);
         }}>
-        <Text style={styles.title}>{this.props.title}</Text>
-        {this.props.description ? <Text style={styles.description}>{this.props.description}</Text> : null}
+        <View style={styles.textCell}>
+          <Text style={styles.title}>{this.props.title}</Text>
+          {this.props.description ? <Text style={styles.description}>{this.props.description}</Text> : null}
+        </View>
+        {this.props.showArrow ? <Image source={require("../../image/rightwards.png")} style={styles.rightwards} /> : null}
       </TouchableOpacity>
     )
   }
