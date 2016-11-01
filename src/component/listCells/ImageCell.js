@@ -51,8 +51,10 @@ export default class TextCell extends Component {
         }}>
         <View style={{flexDirection: "row", alignItems:"center"}}>
           <Image source={imageSource} style={styles.image} />
-          <Text style={styles.title}>{title}</Text>
-          {description ? <Text style={styles.description}>{description}</Text> : null}
+          <View style={{flexDirection: "column"}}>
+            <Text style={styles.title}>{title}</Text>
+            {description ? <Text style={styles.description}>{description}</Text> : null}
+          </View>
         </View>
         {showArrow ? <Image source={require("../../image/rightwards.png")} style={styles.rightwards} /> : null}
       </TouchableOpacity>

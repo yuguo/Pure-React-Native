@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {ScrollView, ListView, Text, View, StyleSheet} from 'react-native';
 import TextCell from '../component/listCells/TextCell';
+import ImageCell from '../component/listCells/ImageCell';
 
 export default class CellView extends Component {
   constructor(props){
@@ -12,6 +13,23 @@ export default class CellView extends Component {
         description: '包括一个标题和一句描述'
       },
       {title: '带上箭头',
+        description: 'Description description description description.',
+        showArrow: true
+      }
+    ]);
+    this.dataSource2 = ds.cloneWithRows([
+      {
+        title: '带图片的单行文本条目',
+        imageUrl: {uri: 'https://qlogo2.store.qq.com/qzone/289796721/289796721/100'}
+      },
+      {
+        title: '双行文本条目',
+        imageUrl: {uri: 'https://qlogo2.store.qq.com/qzone/289796721/289796721/100'},
+        description: '包括一个标题和一句描述'
+      },
+      {
+        title: '带上箭头',
+        imageUrl: {uri: 'https://qlogo2.store.qq.com/qzone/289796721/289796721/100'},
         description: 'Description description description description.',
         showArrow: true
       }
@@ -61,13 +79,14 @@ export default class CellView extends Component {
         />
 
         <ListView
-          dataSource={this.dataSource}
+          dataSource={this.dataSource2}
           renderRow={(rowData) =>
-            <TextCell
+            <ImageCell
               onForward={() => this._onForward(rowData)}
               title={rowData.title}
               description={rowData.description}
               showArrow={rowData.showArrow}
+              imageSource={rowData.imageUrl}
             />
           }
           renderSeparator = {this._renderSepatator.bind(this)}
