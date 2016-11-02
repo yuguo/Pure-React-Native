@@ -1,20 +1,9 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import colors from '../config/colors';
+import TextUnit from './TextUnit';
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 18,
-    marginLeft: 10,
-    marginRight: 20
-  },
-  description: {
-    fontSize: 14,
-    lineHeight: 21,
-    color: colors.btDisabledText,
-    marginLeft: 10,
-    marginRight: 20
-  },
   cell: {
     paddingTop: 14,
     paddingBottom: 14,
@@ -42,7 +31,7 @@ export default class TextCell extends Component {
   }
 
   render(){
-    const {title, description, showArrow, onForward, imageSource} = this.props;
+    const {title, showArrow, onForward, imageSource} = this.props;
     return(
       <TouchableOpacity
         style={styles.cell}
@@ -51,10 +40,7 @@ export default class TextCell extends Component {
         }}>
         <View style={{flexDirection: "row", alignItems:"center"}}>
           <Image source={imageSource} style={styles.image} />
-          <View style={{flexDirection: "column"}}>
-            <Text style={styles.title}>{title}</Text>
-            {description ? <Text style={styles.description}>{description}</Text> : null}
-          </View>
+          <TextUnit {...this.props} />
         </View>
         {showArrow ? <Image source={require("../../image/rightwards.png")} style={styles.rightwards} /> : null}
       </TouchableOpacity>

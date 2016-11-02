@@ -44,7 +44,6 @@ export default class MainView extends Component {
 }
 
   render(){
-
     return(
       <ScrollView style={this.props.style}>
         <ListView
