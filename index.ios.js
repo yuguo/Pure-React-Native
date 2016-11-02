@@ -4,6 +4,7 @@ import { AppRegistry, Text, Navigator, ListView, StyleSheet } from 'react-native
 import MainView from './src/view/MainView.js';
 import ButtonView from './src/view/ButtonView.js';
 import CellView from './src/view/CellView.js';
+import TipsView from './src/view/TipsView.js';
 
 export default class QUI extends Component {
   constructor(props){
@@ -26,9 +27,6 @@ export default class QUI extends Component {
               name: name
             })
           }}
-          onBack={ () => {
-            console.log(route.name);
-          }}
         />
       )
     }else if(route.name == 'Button'){
@@ -40,6 +38,12 @@ export default class QUI extends Component {
     }else if(route.name == 'Cell'){
       return(
         <CellView
+          style={styles.container}
+        />
+      )
+    }else if(route.name == 'Tips'){
+      return(
+        <TipsView
           style={styles.container}
         />
       )
