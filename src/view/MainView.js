@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {ScrollView, ListView, View} from 'react-native';
-import ImageCell from '../component/listCells/ImageCell';
+import {ImageCell} from '../component/listCells';
 
 export default class MainView extends Component {
 
