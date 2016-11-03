@@ -11,6 +11,7 @@ export default class TipsView extends Component {
     return(
       <Toast
         backgroundColor="blue"
+        onClosed={()=>{console.log('onClosed!')}}
       />
     )
   }

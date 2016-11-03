@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal, View, Text, TouchableOpacity, StyleSheet, Image, Animated} from 'react-native';
+import {Modal, View, Text, TouchableOpacity, StyleSheet, Image, Animated, Easing} from 'react-native';
 
 export default class Toast extends Component {
   constructor(props){
@@ -11,9 +11,25 @@ export default class Toast extends Component {
   }
 
   _setModalVisible(visible){
-    this.setState({
-      modalVisible: visible
-    });
+    if(visible){
+      this.setState({
+        modalVisible: visible
+      });
+    }else{
+      Animated.spring(
+        this.state.modalTop,
+        {
+          toValue: -50,
+          tension: 100,
+          friction: 5,
+        }
+      ).start(()=>{
+        this.setState({
+          modalVisible: visible
+        });
+        this.props.onClosed();
+      });
+    }
   }
 
   componentDidMount(){
@@ -21,18 +37,9 @@ export default class Toast extends Component {
     Animated.spring(
       this.state.modalTop,
       {
-        toValue: 0,
-        friction: 7
-      }
-    ).start();
-  }
-
-  componentWillUnmount(){
-    Animated.spring(
-      this.state.modalTop,
-      {
-        toValue: -50,
-        friction: 7
+        toValue: -20,
+        tension: 100,
+        friction: 5,
       }
     ).start();
   }
@@ -42,11 +49,16 @@ export default class Toast extends Component {
     return(
       <Modal
         visible={this.state.modalVisible}
-        onRequestClose={() => {alert("Modal has been closed.")}}
+        onClosed={this.props.onClosed}
       >
-        <Animated.View style={[styles.toast, {top: this.state.modalTop, backgroundColor: backgroundColor}]}>
-          <TouchableOpacity onPress={() => {
-              this._setModalVisible(!this.state.modalVisible);
+        <Animated.View
+          style={[styles.toast,
+            {top: this.state.modalTop,
+              backgroundColor: backgroundColor
+            }]
+        }>
+          <TouchableOpacity style={styles.touchable} onPress={() => {
+              this._setModalVisible(false);
             }}>
             <Text style={styles.text}>Hide Modal</Text>
           </TouchableOpacity>
@@ -59,12 +71,21 @@ export default class Toast extends Component {
 const styles = StyleSheet.create({
   toast: {
     paddingTop: 20,
-    height: 50,
+    height: 70,
     position: 'relative',
     zIndex: 10000,
     alignItems: 'flex-start'
   },
+  touchable: {
+    flex:1,
+    paddingTop: 25,
+    paddingLeft: 10,
+    height: 30,
+    alignSelf: "stretch",
+    justifyContent: 'flex-start'
+  },
   text: {
     color: 'white',
+    alignSelf: "flex-start",
   }
 });
