@@ -6,12 +6,12 @@ import ButtonView from './src/view/ButtonView.js';
 import CellView from './src/view/CellView.js';
 import TipsView from './src/view/TipsView.js';
 
-export default class QUI extends Component {
+export default class Pure extends Component {
   constructor(props){
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.dataSource = ds.cloneWithRows([
-        'Button', 'Cell', 'Tips', 'Text', 'TabNav', 'Search', 'Dialog', 'Menu', 'Actionsheet', 'Share'
+        'Button', 'Cell', 'Tips', 'TabNav', 'Search', 'Dialog', 'Menu', 'Actionsheet', 'Share'
       ]);
   }
 
@@ -69,7 +69,7 @@ export default class QUI extends Component {
             },
             Title: (route, navigator, index, navState) =>{
               if(route.name == 'Main'){
-                return (<Text style={styles.title}>Awesome QUI</Text>);
+                return (<Text style={styles.title}>Pure React Native Components</Text>);
               }else{
                 return  (<Text style={styles.title}>{route.name}</Text>);
               }},
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('QUI', () => QUI);
+AppRegistry.registerComponent('QUI', () => Pure);
