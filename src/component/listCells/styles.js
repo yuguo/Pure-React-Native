@@ -20,5 +20,17 @@ export default StyleSheet.create({
     width: 34,
     height: 34,
     marginLeft: 6
+  },
+  title: {
+    fontSize: 18,
+    marginLeft: 10,
+    marginRight: 20
+  },
+  description: {
+    fontSize: 14,
+    lineHeight: 21,
+    color: colors.btDisabledText,
+    marginLeft: 10,
+    marginRight: 20
   }
 });

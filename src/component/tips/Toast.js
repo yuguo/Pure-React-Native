@@ -19,7 +19,7 @@ export default class Toast extends Component {
       Animated.spring(
         this.state.modalTop,
         {
-          toValue: -50,
+          toValue: -70,
           tension: 100,
           friction: 5,
         }
