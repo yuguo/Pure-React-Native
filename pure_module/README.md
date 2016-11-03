@@ -28,13 +28,13 @@ That's it!
 
 ### Why Pure Components
 
-Stateless components may also be referred to as Pure Components, or even Dumb Components, and are meant to represent any React Component declared as a function that has no state and returns the same markup given the same props.
+**Stateless components may also be referred to as Pure Components**, or even Dumb Components, and are meant to represent any React Component declared as a function that has no state and returns the same markup given the same props.
 
 These types of components surprisingly compose a large majority of our applications and, as a result, React 0.14 introduces the ability to write these stateless components as functions, also known as functional stateless components.
 
 So these are some of the UI elements that I summarize from Tencent work.
 
-They are so simple that you can grab and put it into your project now.
+They are simple enough that you can grab and put it into your project now.
 
 ### Buttons
 
@@ -69,7 +69,7 @@ import { Button } from 'react-native-elements'
 
 ### List Cell
 
-![](http://yuguous-10027517.cos.myqcloud.com/cell.png)
+![](http://yuguous-10027517.cos.myqcloud.com/cells.png)
 
 ### Toast
 
