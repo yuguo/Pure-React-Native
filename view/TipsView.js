@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {ScrollView, ListView, Text, View, StyleSheet} from 'react-native';
-import {Toast} from '../pure_module/src/tips';
+import {Toast} from '../pure_module/src';
 
 export default class TipsView extends Component {
   constructor(props){

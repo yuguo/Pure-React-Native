@@ -1,0 +1,24 @@
+{
+  "name": "react-native-pure",
+  "version": "0.0.2",
+  "description": "React Native Pure UI components",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yuguo/Pure-React-Native.git"
+  },
+  "keywords": [
+    "react-native",
+    "reactjs",
+    "reactnative"
+  ],
+  "author": "Yuguo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yuguo/Pure-React-Native/issues"
+  },
+  "homepage": "https://github.com/yuguo/Pure-React-Native#readme",
+  "dependencies": {
+    "color": "^0.11.3"
+  }
+}
