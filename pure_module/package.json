@@ -1,6 +1,6 @@
 {
   "name": "pure-react-native",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Pure React Native UI components",
   "main": "src/index.js",
   "repository": {
