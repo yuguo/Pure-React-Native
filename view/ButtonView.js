@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import colors from '../component/config/colors'
+import colors from '../pure_module/src/config/colors'
 
-import Button from '../component/buttons/Button';
+import Button from '../pure_module/src/buttons/Button';
 
 const styles = StyleSheet.create({
   alignButtons: {

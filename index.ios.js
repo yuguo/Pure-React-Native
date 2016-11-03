@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, Navigator, ListView, StyleSheet } from 'react-native';
 
-import MainView from './src/view/MainView.js';
-import ButtonView from './src/view/ButtonView.js';
-import CellView from './src/view/CellView.js';
-import TipsView from './src/view/TipsView.js';
+import MainView from './view/MainView.js';
+import ButtonView from './view/ButtonView.js';
+import CellView from './view/CellView.js';
+import TipsView from './view/TipsView.js';
 
 export default class Pure extends Component {
   constructor(props){

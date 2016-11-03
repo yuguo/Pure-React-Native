@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {ScrollView, ListView, Text, View, StyleSheet} from 'react-native';
-import {TextCell, ImageCell} from '../component/listCells';
+import {TextCell, ImageCell} from '../pure_module/src/listCells';
 
 export default class CellView extends Component {
   constructor(props){
