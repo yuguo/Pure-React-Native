@@ -1,3 +1,3 @@
-import Toast from './Toast.js';
+import Toast from './Toast';
 
-export {Toast};
+export { Toast };
