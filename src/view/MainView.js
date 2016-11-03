@@ -16,9 +16,6 @@ export default class MainView extends Component {
       case 'Tips':
         imageUri = require("../image/tips.png");
         break;
-      case 'Text':
-        imageUri = require("../image/text.png");
-        break;
       case 'TabNav':
         imageUri = require("../image/tab.png");
         break;
