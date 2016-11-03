@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {ScrollView, View, Text, StyleSheet} from 'react-native';
 import colors from '../pure_module/src/config/colors'
 import {Button} from '../pure_module/src/';
 
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 export default class ButtonView extends Component {
   render(){
     return(
-      <View style={this.props.style}>
+      <ScrollView style={this.props.style}>
         <View style={styles.alignButtons}>
           <Button
             type="line"
@@ -95,7 +95,7 @@ export default class ButtonView extends Component {
             text="自定义按钮"
           />
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }
