@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexDirection:'row',
     marginBottom: 10,
+    marginRight: 5,
+  },
+  button: {
+    marginLeft: 5,
+    flex: 1
   }
 });
 
@@ -18,17 +23,18 @@ export default class ButtonView extends Component {
       <ScrollView style={this.props.style}>
         <View style={styles.alignButtons}>
           <Button
+            style={styles.button}
             onPress={() => {alert('onPress!')}}
             text="按钮"
           />
           <Button
-            style={{backgroundColor: colors.btBlue, borderColor: "transparent"}}
+            style={[styles.button, {backgroundColor: colors.btBlue, borderColor: "transparent"}]}
             textStyle={{color: "white"}}
             onPress={() => {alert('onPress!')}}
             text="确认"
           />
           <Button
-            style={{backgroundColor: colors.btRed, borderColor: "transparent"}}
+            style={[styles.button, {backgroundColor: colors.btRed, borderColor: "transparent"}]}
             textStyle={{color: "white"}}
             onPress={() => {alert('onPress!')}}
             text="警告"
@@ -36,11 +42,13 @@ export default class ButtonView extends Component {
         </View>
         <View style={styles.alignButtons}>
           <Button
+            style={styles.button}
             onPress={() => {alert('onPress!')}}
             disabled
             text="Disabled"
           />
           <Button
+            style={styles.button}
             onPress={() => {alert('onPress!')}}
             onLongPress={() => {alert('onLongPress!')}}
             text="多文字按钮"
@@ -49,15 +57,17 @@ export default class ButtonView extends Component {
 
         <View>
           <Button
+            style={{marginBottom: 10, marginLeft: 5, marginRight: 5}}
             large
             onPress={() => {alert('onPress!')}}
             onLongPress={() => {alert('onLongPress!')}}
             text="A Really Large Button"
           />
-        <View style={{flexDirection: 'row'}} >
+
+          <View style={[styles.alignButtons, {flexDirection: 'row'}]} >
             <Button
               large
-              style={{flex: 1, backgroundColor: colors.btBlue, borderColor: "transparent"}}
+              style={[styles.button, {flex: 1, backgroundColor: colors.btBlue, borderColor: "transparent"}]}
               textStyle={{color: "white"}}
               onPress={() => {alert('onPress!')}}
               onLongPress={() => {alert('onLongPress!')}}
@@ -65,15 +75,17 @@ export default class ButtonView extends Component {
             />
             <Button
               large
-              style={{flex: 1, backgroundColor: colors.btRed, borderColor: "transparent"}}
+              style={[styles.button, {flex: 1, backgroundColor: colors.btRed, borderColor: "transparent"}]}
               textStyle={{color: "white"}}
               onPress={() => {alert('onPress!')}}
               onLongPress={() => {alert('onLongPress!')}}
               text="警告"
             />
           </View>
+
           <Button
             large
+            style={{marginBottom: 10, marginLeft: 5, marginRight: 5}}
             onPress={() => {alert('onPress!')}}
             onLongPress={() => {alert('onLongPress!')}}
             disabled={true}

@@ -13,25 +13,19 @@ const styles = StyleSheet.create({
     minWidth: 30,
     paddingLeft: 16,
     paddingRight: 16,
-    marginLeft: 12,
-    marginRight: 12,
     borderColor: '#c3c8cc'
-    // flexDirection: 'row'
-  },
-  largeStyle : {
-    borderRadius: 3,
-    padding: 11,
-    marginLeft: 12,
-    marginRight: 12,
-    marginTop: 5,
-    marginBottom: 5
-  },
-  largeTextStyle : {
-    fontSize: 18
   },
   text: {
     color: 'black',
     fontSize: 14
+  },
+  largeStyle : {
+    height: 40,
+    borderRadius: 3,
+    padding: 11
+  },
+  largeTextStyle : {
+    fontSize: 18
   },
   disabled: {
     backgroundColor: "#e9ebec"
@@ -86,6 +80,6 @@ Button.propTypes = {
   disabled: React.PropTypes.bool,
   large: React.PropTypes.bool,
   text: React.PropTypes.string.isRequired,
-  style: React.PropTypes.object,
-  textStyle: React.PropTypes.object
+  style: TouchableHighlight.propTypes.style,
+  textStyle: Text.propTypes.style
 }
