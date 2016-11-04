@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
-import colors from '../config/colors';
+import {Text, StyleSheet, TouchableHighlight} from 'react-native';
 import Color from 'color';
 
 const styles = StyleSheet.create({
@@ -8,17 +7,37 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 0.5,
-    borderColor: 'transparent'
+    backgroundColor: 'transparent',
+    borderRadius: 2,
+    height: 30,
+    minWidth: 30,
+    paddingLeft: 16,
+    paddingRight: 16,
+    marginLeft: 12,
+    marginRight: 12,
+    borderColor: '#c3c8cc'
     // flexDirection: 'row'
   },
+  largeStyle : {
+    borderRadius: 3,
+    padding: 11,
+    marginLeft: 12,
+    marginRight: 12,
+    marginTop: 5,
+    marginBottom: 5
+  },
+  largeTextStyle : {
+    fontSize: 18
+  },
   text: {
-    color: 'white'
+    color: 'black',
+    fontSize: 14
   },
   disabled: {
-    backgroundColor: colors.btDisabled
+    backgroundColor: "#e9ebec"
   },
   disabledText: {
-    color: colors.btDisabledText
+    color: "#bbbbbb"
   }
 });
 
@@ -28,76 +47,18 @@ export default class Button extends Component {
   }
 
   render(){
-    const {type, onPress, onLongPress, text, bgColor, disabled, size} = this.props;
+    const {onPress, onLongPress, disabled, large, text, style, textStyle} = this.props;
 
     /* 自定义背景色，或读取type */
-    let backgroundColor,
-        borderStyle,
-        borderTextStyle;
-    if(bgColor){
-      backgroundColor = bgColor;
-    }else{
-      switch (type) {
-        case 'red':
-          backgroundColor = colors.btRed;
-          break;
-        case 'blue':
-          backgroundColor = colors.btBlue;
-          break;
-        case 'line':
-          backgroundColor = 'white';
-          borderStyle = {
-            borderColor: colors.btWhiteLine
-          };
-          borderTextStyle = {
-            color: 'black',
-          }
-          break;
-        default:
-          backgroundColor = colors.btRed;
-      }
-    }
-
-    let underlayColor = Color(backgroundColor).darken(0.1).hexString();
-
-    /* 读取size */
-    switch(size){
-      case 'large':
-        sizeStyle = {
-          borderRadius: 3,
-          padding: 11,
-          marginLeft: 12,
-          marginRight: 12,
-          marginTop: 5,
-          marginBottom: 5
-        },
-        sizeTextStyle = {
-          fontSize: 18
-        }
-        break;
-      default:
-        sizeStyle = {
-          borderRadius: 2,
-          height: 30,
-          minWidth: 30,
-          paddingLeft: 16,
-          paddingRight: 16,
-          marginLeft: 12,
-          marginRight: 12,
-        },
-        sizeTextStyle = {
-          fontSize: 14
-        }
-    }
+    let underlayColor = (style && style.backgroundColor) ? Color(style.backgroundColor).darken(0.1).hexString() : '#f0f0f0';
 
     return(
       <TouchableHighlight
         style={[
           styles.button,
-          {backgroundColor: backgroundColor},
-          borderStyle,
-          sizeStyle,
-          disabled && styles.disabled
+          style ? style : null,
+          large ? styles.largeStyle : null,
+          disabled ? styles.disabled : null
         ]}
         activeOpacity={1}
         disabled={disabled}
@@ -107,9 +68,9 @@ export default class Button extends Component {
       >
           <Text style={[
               styles.text,
-              borderTextStyle,
-              sizeTextStyle,
-              disabled && styles.disabledText
+              textStyle ? textStyle : null,
+              large ? styles.largeTextStyle : null,
+              disabled ? styles.disabledText : null,
             ]}
           >
             {text}
@@ -117,4 +78,14 @@ export default class Button extends Component {
       </TouchableHighlight>
     )
   }
+}
+
+Button.propTypes = {
+  onPress: React.PropTypes.func,
+  onLongPress: React.PropTypes.func,
+  disabled: React.PropTypes.bool,
+  large: React.PropTypes.bool,
+  text: React.PropTypes.string.isRequired,
+  style: React.PropTypes.object,
+  textStyle: React.PropTypes.object
 }

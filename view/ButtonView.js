@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {ScrollView, View, Text, StyleSheet} from 'react-native';
-import colors from '../pure_module/src/config/colors'
+import {ScrollView, View, StyleSheet} from 'react-native';
+import colors from '../pure_module/src/config/colors';
 import {Button} from '../pure_module/src/';
 
 const styles = StyleSheet.create({
@@ -18,81 +18,66 @@ export default class ButtonView extends Component {
       <ScrollView style={this.props.style}>
         <View style={styles.alignButtons}>
           <Button
-            type="line"
             onPress={() => {alert('onPress!')}}
-            onLongPress={() => {alert('onLongPress!')}}
             text="按钮"
           />
           <Button
-            type="blue"
+            style={{backgroundColor: colors.btBlue, borderColor: "transparent"}}
+            textStyle={{color: "white"}}
             onPress={() => {alert('onPress!')}}
-            onLongPress={() => {alert('onLongPress!')}}
             text="确认"
           />
           <Button
-            type="red"
+            style={{backgroundColor: colors.btRed, borderColor: "transparent"}}
+            textStyle={{color: "white"}}
             onPress={() => {alert('onPress!')}}
-            onLongPress={() => {alert('onLongPress!')}}
             text="警告"
           />
         </View>
         <View style={styles.alignButtons}>
           <Button
             onPress={() => {alert('onPress!')}}
-            onLongPress={() => {alert('onLongPress!')}}
-            disabled={true}
+            disabled
             text="Disabled"
           />
           <Button
             onPress={() => {alert('onPress!')}}
             onLongPress={() => {alert('onLongPress!')}}
-            bgColor="blue"
-            text="自定义按钮"
-          />
-          <Button
-            disabled
-            onPress={() => {alert('onPress!')}}
-            onLongPress={() => {alert('onLongPress!')}}
-            bgColor="blue"
-            text="自定义按钮"
+            text="多文字按钮"
           />
         </View>
 
         <View>
           <Button
-            type="line"
-            size="large"
+            large
             onPress={() => {alert('onPress!')}}
             onLongPress={() => {alert('onLongPress!')}}
-            text="按钮"
+            text="A Really Large Button"
           />
+        <View style={{flexDirection: 'row'}} >
+            <Button
+              large
+              style={{flex: 1, backgroundColor: colors.btBlue, borderColor: "transparent"}}
+              textStyle={{color: "white"}}
+              onPress={() => {alert('onPress!')}}
+              onLongPress={() => {alert('onLongPress!')}}
+              text="确认"
+            />
+            <Button
+              large
+              style={{flex: 1, backgroundColor: colors.btRed, borderColor: "transparent"}}
+              textStyle={{color: "white"}}
+              onPress={() => {alert('onPress!')}}
+              onLongPress={() => {alert('onLongPress!')}}
+              text="警告"
+            />
+          </View>
           <Button
-            size="large"
-            type="blue"
-            onPress={() => {alert('onPress!')}}
-            onLongPress={() => {alert('onLongPress!')}}
-            text="确认"
-          />
-          <Button
-            size="large"
-            type="red"
-            onPress={() => {alert('onPress!')}}
-            onLongPress={() => {alert('onLongPress!')}}
-            text="警告"
-          />
-          <Button
-            size="large"
+            large
             onPress={() => {alert('onPress!')}}
             onLongPress={() => {alert('onLongPress!')}}
             disabled={true}
             text="Disabled"
-          />
-          <Button
-            size="large"
-            onPress={() => {alert('onPress!')}}
-            onLongPress={() => {alert('onLongPress!')}}
-            bgColor="blue"
-            text="自定义按钮"
           />
         </View>
       </ScrollView>
