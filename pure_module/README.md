@@ -1,5 +1,7 @@
 ## Pure React Native Components
 
+![](http://yuguous-10027517.file.myqcloud.com/pure-logo.png)
+
 ### 安装和使用（TL;DR;）
 
 Step 1:
