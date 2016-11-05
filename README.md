@@ -1,6 +1,6 @@
 ## Pure React Native Components
 
-![](http://yuguous-10027517.file.myqcloud.com/pure-logo.png)
+![](http://yuguous-10027517.cos.myqcloud.com/pure-logo.png)
 
 ### 安装和使用（TL;DR;）
 
@@ -26,7 +26,7 @@ Step 3:
 
 That's it!
 
-![](http://yuguous-10027517.file.myqcloud.com/button.png)
+![](http://yuguous-10027517.cos.myqcloud.com/button.png)
 
 ### 为什么使用Pure Components（Why Pure Components）
 
@@ -74,7 +74,7 @@ import { Button } from 'react-native-elements'
 />
 ```
 
-![](http://yuguous-10027517.file.myqcloud.com/button2.png)
+![](http://yuguous-10027517.cos.myqcloud.com/button2.png)
 
 #### Button API
 
@@ -90,7 +90,7 @@ import { Button } from 'react-native-elements'
 
 ### List Cell
 
-![](http://yuguous-10027517.file.myqcloud.com/cells.png)
+![](http://yuguous-10027517.cos.myqcloud.com/cells.png)
 
 ### Toast
 
