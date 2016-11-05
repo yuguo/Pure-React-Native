@@ -61,7 +61,7 @@ export default class ButtonView extends Component {
             large
             onPress={() => {alert('onPress!')}}
             onLongPress={() => {alert('onLongPress!')}}
-            text="A Really Large Button"
+            text="确认"
           />
 
           <View style={[styles.alignButtons, {flexDirection: 'row'}]} >
@@ -95,4 +95,8 @@ export default class ButtonView extends Component {
       </ScrollView>
     )
   }
+}
+
+ButtonView.propTypes = {
+  style: View.propTypes.style
 }
