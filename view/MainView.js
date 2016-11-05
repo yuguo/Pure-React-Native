@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Navigator, ScrollView, ListView, Image, View, StyleSheet, Text} from 'react-native';
+import {Navigator, TouchableOpacity, View, StyleSheet, Text} from 'react-native';
 
 import MainListView from './MainListView.js';
 import ButtonView from './ButtonView.js';
@@ -43,6 +43,33 @@ export default class MainView extends Component {
     }
   }
 
+  _renderLeftButton(route, navigator){
+    if(route.name == 'Main'){
+      return null;
+    }else{
+      return (
+        <TouchableOpacity style={styles.navBarButton} onPress={() => navigator.pop()}>
+          <Text style={styles.navBarButtonText}>Back</Text>
+        </TouchableOpacity>
+      );
+    }
+  }
+
+  _renderTitle(route){
+    if(route.name == 'Main'){
+      return null;
+    }else{
+      return (
+        <View style={styles.titleContainer}>
+          <Text
+            style={styles.titleText}>
+            {route.name}
+          </Text>
+        </View>
+      );
+    }
+  }
+
   render(){
     return(
       <Navigator
@@ -50,24 +77,13 @@ export default class MainView extends Component {
         renderScene={ this._renderScene.bind(this) }
         navigationBar={
           <Navigator.NavigationBar
-           routeMapper={{
-             LeftButton: (route, navigator, index, navState) => {
-              if(route.name == 'Main'){
-                return null;
-              }else{
-                return (<Text onPress={() => navigator.pop() }>Back</Text>);
-              }},
-            RightButton: (route, navigator, index, navState) => {
-              return null;
-            },
-            Title: (route, navigator, index, navState) =>{
-              if(route.name == 'Main'){
-                return null;
-              }else{
-                return  (<Text style={styles.title}>{route.name}</Text>);
-              }},
-           }}
-           style={{ height: 50}}
+            style={styles.navBarContainer}
+            routeMapper={{
+              LeftButton: this._renderLeftButton,
+              RightButton: () => null,
+              Title: this._renderTitle,
+             }
+           }
           />
         }
       />
@@ -77,9 +93,34 @@ export default class MainView extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 50
+    marginTop: 65
   },
-  title: {
-    fontSize:20
+  navBarContainer: {
+    backgroundColor: 'white',
+    height: 64,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'stretch'
+  },
+  navBarButton: {
+    marginLeft: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  navBarButtonText: {
+    lineHeight: 44,
+    fontSize: 17,
+    letterSpacing: 0.5,
+  },
+  titleContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  titleText: {
+    fontSize: 17,
+    lineHeight: 44,
+    letterSpacing: 0.5,
+    color: '#333',
+    fontWeight: '500',
   }
 });
