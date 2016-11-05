@@ -48,7 +48,7 @@ const MainListView = ({style, onForward}) => {
     <ScrollView style={style}>
       <Image
         source={require("../image/pure-logo.png")}
-        style={{height: 41.5, width: 181.5, alignSelf: "center"}}
+        style={{height: 41.5, marginTop: 30, marginBottom: 5, width: 181.5, alignSelf: "center"}}
       />
       <ListView
         dataSource={dataSource}

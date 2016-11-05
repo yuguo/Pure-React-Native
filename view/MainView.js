@@ -8,13 +8,20 @@ import TipsView from './TipsView.js';
 
 export default class MainView extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      navBarHeight : 0,
+    }
+  }
 
   _renderScene(route, navigator){
     this.navigator = navigator;
+
     if(route.name == 'Main') {
+      // this.setState({navBarHeight:0})
       return(
         <MainListView
-          style={styles.container}
           onForward={ (name) => {
             navigator.push({
               name: name
@@ -77,7 +84,7 @@ export default class MainView extends Component {
         renderScene={ this._renderScene.bind(this) }
         navigationBar={
           <Navigator.NavigationBar
-            style={styles.navBarContainer}
+            style={[styles.navBarContainer, {height: this.state.navBarHeight}]}
             routeMapper={{
               LeftButton: this._renderLeftButton,
               RightButton: () => null,
