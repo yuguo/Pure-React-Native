@@ -15,10 +15,7 @@ Step 2:
 ```js
 import {Button} from pure-react-native;
 <Button
-  type="blue"
-  text="Submit"
-  onPress={alert("Pressed!")}
-  onLongPress={alert("Long Pressed!")}
+  text="按钮"
 />
 ```
 
